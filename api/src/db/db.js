@@ -2,7 +2,7 @@ const { Sequelize, DataTypes, Model } = require('sequelize');
 
 const sequelize = new Sequelize('teams', 'teamsAdmin', 'myPass', {
     dialect: 'sqlite',
-    storage: './team-battles',
+    storage: './team-battles-individuals',
     pool: {
         max: 5,
         min: 0,
@@ -69,8 +69,8 @@ Team.init(
 );
 
 // Foreign Keys
-Team.hasMany(User, { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
-User.belongsTo(Team , { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
+// Team.hasMany(User, { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
+// User.belongsTo(Team , { foreignKey: { allowNull: false }, onDelete: 'CASCADE'});
 
 class Account extends Model {}
 
