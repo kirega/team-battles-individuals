@@ -3,7 +3,7 @@ const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
   user.findAll({
-    include: [ { model: team } ],
+    // include: [ { model: team } ],
     order: [ [ 'her', 'DESC' ] ]
   })
     .then(
@@ -15,7 +15,7 @@ exports.allUsers = (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-  var { firstName, lastName, userName, teamId } = req.body;
+  var { firstName, lastName, userName, teamId, phoneNumber} = req.body;
   //Confirm that the userName actually exists and set the her
   var url = `https://lichess.org/@/${userName}/perf/blitz`;
   let userData;
@@ -34,8 +34,8 @@ exports.createUser = async (req, res, next) => {
       firstName,
       lastName,
       userName,
-      teamId,
-      her
+      her,
+      phoneNumber
     });
     res.json(result);
   } catch (e) {

@@ -24,34 +24,35 @@ export class CreateUserComponent implements OnInit {
       firstName: [ '', [ Validators.required ] ],
       lastName: [ '' ],
       userName: [ '' , Validators.required ],
-      teamId: [ '' , Validators.required ]
+      phoneNumber: [ '' , Validators.required ],
+      // teamId: [ '' , Validators.required ]
     } );
     // fetch all teams;
-    this.http.getAllTeams().subscribe(
-      res => {
-        this.options = res;
-        this.filteredOptions = this.options;
-      }
-    );
-    this.myForm.controls['teamId'].valueChanges
-      .pipe(
-        startWith( '' ),
-        map( value => typeof value === 'string' ? value : value.teamName )
-      )
-      .subscribe( (value: string = '') => {
-        const vals = [];
-        // this.filteredOptions = this.options;
-        if ( this.options && value.trim().length !== 0 ) {
-          for ( const a of this.options ) {
-            if ( a.teamName.toLowerCase().includes( value.toLowerCase().trim() ) ) {
-              vals.push( a );
-            }
-          }
-          this.filteredOptions = vals;
-        } else {
-          this.filteredOptions = this.options;
-        }
-      } );
+    // this.http.getAllTeams().subscribe(
+    //   res => {
+    //     this.options = res;
+    //     this.filteredOptions = this.options;
+    //   }
+    // );
+    // this.myForm.controls['teamId'].valueChanges
+    //   .pipe(
+    //     startWith( '' ),
+    //     map( value => typeof value === 'string' ? value : value.teamName )
+    //   )
+    //   .subscribe( (value: string = '') => {
+    //     const vals = [];
+    //     // this.filteredOptions = this.options;
+    //     if ( this.options && value.trim().length !== 0 ) {
+    //       for ( const a of this.options ) {
+    //         if ( a.teamName.toLowerCase().includes( value.toLowerCase().trim() ) ) {
+    //           vals.push( a );
+    //         }
+    //       }
+    //       this.filteredOptions = vals;
+    //     } else {
+    //       this.filteredOptions = this.options;
+    //     }
+    //   } );
   }
 
   createUser() {
@@ -60,7 +61,7 @@ export class CreateUserComponent implements OnInit {
     data = {
       ...data,
       userName: data.userName.toLowerCase(),
-      teamId: this.teamId
+      // teamId: this.teamId
     };
     this.http.createUser(data).subscribe(
       res => {

@@ -20,17 +20,21 @@
                     <mat-label>User Name</mat-label>
                     <input matInput placeholder="User Name" formControlName='userName' required>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Team</mat-label>
-                    <input matInput placeholder="Team Name" formControlName='teamId' [matAutocomplete]="auto" required>
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)"
-                                      [displayWith]="showTeam">
-                        <mat-option *ngFor="let option of filteredOptions" [value]="option"  >
-                            {{option.teamName}}
-                        </mat-option>
-                    </mat-autocomplete>
-                    <mat-icon matSuffix (click)="clearTeam()" *ngIf="teamId" class="clear">clear</mat-icon>
-                </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" formControlName='phoneNumber' required>
+              </mat-form-field>
+<!--                <mat-form-field appearance="outline">-->
+<!--                    <mat-label>Team</mat-label>-->
+<!--                    <input matInput placeholder="Team Name" formControlName='teamId' [matAutocomplete]="auto" required>-->
+<!--                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)"-->
+<!--                                      [displayWith]="showTeam">-->
+<!--                        <mat-option *ngFor="let option of filteredOptions" [value]="option"  >-->
+<!--                            {{option.teamName}}-->
+<!--                        </mat-option>-->
+<!--                    </mat-autocomplete>-->
+<!--                    <mat-icon matSuffix (click)="clearTeam()" *ngIf="teamId" class="clear">clear</mat-icon>-->
+<!--                </mat-form-field>-->
             <!-- </div> -->
             <button mat-button class="btn-primary" type="submit" [disabled]='myForm.status === "INVALID"'>
                 <mat-icon>save</mat-icon>Submit

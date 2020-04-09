@@ -39,6 +39,10 @@ User.init(
             allowNull: false,
             unique: true
         },
+        phoneNumber: {
+          type: Sequelize.STRING,
+          allowNull: false
+        },
         her: {
             type: Sequelize.INTEGER
         }

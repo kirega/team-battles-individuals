@@ -11,7 +11,7 @@ import { BattleService } from 'src/app/battle-service.service';
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'team' , 'updatedAt', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'updatedAt', 'action'];
 
   constructor(private http: BattleService, private router: Router) { }
 
