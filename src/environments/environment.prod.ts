@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://api.proxchesshouse.com/api/v1'
+  url: 'https://api2.proxchesshouse.com/api/v1'
 };
