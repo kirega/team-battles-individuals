@@ -98,6 +98,6 @@ Account.init({
     modelName: 'Account'
   })
 
-sequelize.sync();
+// sequelize.sync();
 
 module.exports = { sequelize, user: User, team: Team , account: Account};

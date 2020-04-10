@@ -1,4 +1,4 @@
-var { team, user } = require('../db/db');
+var { user, team } = require('../../models/index');
 
 exports.allTeams = (req, res, next) => {
     team.findAll({
