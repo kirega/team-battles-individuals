@@ -1,4 +1,5 @@
 var { account } = require('../../models/index');
+
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 let jwtSecret =  "my-special-secret";

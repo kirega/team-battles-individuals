@@ -165,3 +165,18 @@ button:hover{
 .nav-item:focus{
   outline: none;
 }
+.update-sucess{
+  color: green;
+}
+.update-none{
+  color: black;
+}
+.update-sucess:hover{
+  transition: 200ms;
+  cursor: pointer;
+  color: black;
+}
+.update-none:hover{
+  cursor: pointer;
+  color: green;
+}
