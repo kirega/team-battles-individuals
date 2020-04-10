@@ -12,7 +12,12 @@ body {
   left: 0;
   right: 0;
 }
-
+.text-sucess{
+  color: green !important;
+}
+.text-warning{
+  color: red !important;
+}
 @media screen and (max-width: 960px) {
   .p-xs-2{
     padding: 1.5em;
@@ -37,9 +42,14 @@ body {
   cursor: pointer;
   color: red;
 }
-button{
+button.mat-button{
   background-color: #3f51b5 !important;
   color: #FFFFFF !important;
+}
+.mat-sort-header-container.mat-sort-header-sorted {
+  button.mat-sort-header-button{
+    background-color: none !important;
+  }
 }
 
 button:hover{

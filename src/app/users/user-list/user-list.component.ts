@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BattleService } from 'src/app/battle-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-list',
@@ -13,29 +16,36 @@ export class UserListComponent implements OnInit {
   loading = true;
   users;
   displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'updatedAt', 'action'];
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(
     private http: BattleService,
     private snackBar: MatSnackBar,
-    private router: Router) { }
-
-  ngOnInit(): void {
+    private router: Router) {
     const user = JSON.parse(localStorage.getItem('token'));
-
     if (!user) {
       this.displayedColumns.pop();
     } else {
-      this.displayedColumns.unshift('phoneNumber');
-      this.displayedColumns.unshift('paymentStatus');
+      this.displayedColumns.splice(2, 0, 'phoneNumber');
+      this.displayedColumns.splice(6, 0, 'paymentStatus');
+      this.displayedColumns.unshift('#');
     }
+  }
+
+  ngOnInit(): void {
+
     this.loading = true;
     this.http.getAllUsers()
-      .subscribe(res => {
-        this.users = res;
+      .subscribe((res: any) => {
+        this.users = new MatTableDataSource(res);
+        this.users.sort = this.sort;
+        this.users.paginator = this.paginator;
+        // this.users.data = res;
         this.loading = false;
       },
         (err) => {
-          this.users = [];
+          this.users.data = [];
           this.loading = false;
         }
       );
