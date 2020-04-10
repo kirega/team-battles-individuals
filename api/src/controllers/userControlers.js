@@ -1,4 +1,6 @@
-var { user, team } = require('../../models/index');
+const { user, team } = require('../../models/index');
+// var {user} = require('../db/db');
+
 const superagent = require('superagent');
 
 exports.allUsers = (req, res, next) => {
@@ -28,7 +30,8 @@ exports.createUser = async (req, res, next) => {
     console.log("error occured", e);
     res.status(400).json({ error: "UserName does not exist on Lichess" })
   }
-  const her = userData.stat.highest.int;
+  console.log(userData);
+  const her = userData.stat.highest ?  userData.stat.highest.int : 1500;
   try {
     var result = await user.create({
       firstName,
