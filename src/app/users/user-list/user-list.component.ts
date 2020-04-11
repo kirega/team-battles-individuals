@@ -30,7 +30,7 @@ export class UserListComponent implements OnInit {
       this.displayedColumns.splice(3, 0, 'phoneNumber');
       this.displayedColumns.splice(7, 0, 'paymentStatus');
       // this.displayedColumns.unshift('#');
-    }x
+    }
   }
 
   ngOnInit(): void {
