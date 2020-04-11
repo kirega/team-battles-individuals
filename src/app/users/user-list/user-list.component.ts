@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class UserListComponent implements OnInit {
   loading = true;
   users;
-  displayedColumns: string[] = ['firstName', 'lastName', 'userName', 'HER', 'updatedAt', 'action'];
+  displayedColumns: string[] = ['#','firstName', 'lastName', 'userName', 'HER', 'updatedAt', 'action'];
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
@@ -27,10 +27,10 @@ export class UserListComponent implements OnInit {
     if (!user) {
       this.displayedColumns.pop();
     } else {
-      this.displayedColumns.splice(2, 0, 'phoneNumber');
-      this.displayedColumns.splice(6, 0, 'paymentStatus');
-      this.displayedColumns.unshift('#');
-    }
+      this.displayedColumns.splice(3, 0, 'phoneNumber');
+      this.displayedColumns.splice(7, 0, 'paymentStatus');
+      // this.displayedColumns.unshift('#');
+    }x
   }
 
   ngOnInit(): void {
