@@ -16,21 +16,22 @@ export class AuthDirective {
     let user;
     if (token) {
       user = jwt_decode(token.accessToken);
-      if (roles){
-        if (roles === user.permission && !this.show) {
-          // show the component
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.show = true;
-        } else if (!(roles === user.permission)  && this.show){
-          // remove the component
-          this.viewContainer.clear();
-          this.show = false;
-        }
-      } else {
+      if (user && !this.show) {
+        // if (roles === user.permission && !this.show) {
+        // show the component
         this.viewContainer.createEmbeddedView(this.templateRef);
         this.show = true;
+      } else if (!user && this.show) {
+        // remove the component
+        this.viewContainer.clear();
+        this.show = false;
       }
     }
+    else {
+      this.viewContainer.clear();
+      this.show = false;
+    }
+  }
     // Check if the current user has the correct access rights needed for that action
     // the access control also works for user ids
   }
