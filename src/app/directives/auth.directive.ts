@@ -11,7 +11,7 @@ export class AuthDirective {
     private viewContainer: ViewContainerRef
   ) { }
 
-  @Input() set appAuth(roles: string){
+  @Input() set appAuth(roles: string) {
     const token = JSON.parse(localStorage.getItem('token'));
     let user;
     if (token) {
@@ -31,9 +31,6 @@ export class AuthDirective {
       this.viewContainer.clear();
       this.show = false;
     }
-  }
-    // Check if the current user has the correct access rights needed for that action
-    // the access control also works for user ids
   }
 
 }
